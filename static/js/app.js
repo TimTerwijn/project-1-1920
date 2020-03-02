@@ -1,52 +1,13 @@
 /*** Fetching data -> refactor into module later ***/
+import {fetchBook} from "./modules/api.js";
 
 function init(){
   renderAlphabet();
 }
 
-function fetchBook(name){
-  const cors = 'https://cors-anywhere.herokuapp.com/';
-  const endpoint = 'https://zoeken.oba.nl/api/v1/search/?q=';
-  const key = '1e19898c87464e239192c8bfe422f280';
-  const secret = '4289fec4e962a33118340c888699438d';
-  const detail = 'Default';
 
-  const config = {
-    Authorization: `Bearer ${secret}`
-  };
 
-  const url = `${cors}${endpoint}${name}&authorization=${key}&detaillevel=${detail}&output=json`;
-  
-  const parent = document.getElementById('results');
-  parent.innerHTML = "Loading please wait..."
 
-  fetch(url, config)
-  .then(response => {
-    return response.json();
-  })
-  .then(data => {
-    render(data);
-  })
-  .catch(err => {
-    console.log(err);
-  });
-}
-
-// render data
-function render(data) {
-  const parent = document.getElementById('results');
-  parent.innerHTML = "";
-  const results = data.results;
-  console.dir(results);
-  results.forEach((item, i) => {
-    const html = `
-            <img src="${
-                item.coverimages ? item.coverimages[1] : 'Geen samenvatting'
-              }">
-          `;
-    parent.insertAdjacentHTML('beforeend', html);
-  });
-}
 
 document.onkeydown = checkKey;
 function checkKey(e) {
