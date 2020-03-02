@@ -17,6 +17,9 @@ function fetchBook(name){
 
   const url = `${cors}${endpoint}${name}&authorization=${key}&detaillevel=${detail}&output=json`;
   
+  const parent = document.getElementById('results');
+  parent.innerHTML = "Loading please wait..."
+
   fetch(url, config)
   .then(response => {
     return response.json();
@@ -85,7 +88,7 @@ function removeLetter(){
   fetchBook(word);
 }
 
-const alphabetArray = ["Y", "Z", "A", "B", "C", "D", "E", "F", "G", "H", 
+const alphabetArray = ["Y", "Z", " ", "A", "B", "C", "D", "E", "F", "G", "H", 
                     "I", "J", "K", "L", "M", "N", "O", "P", 
                     "Q", "R", "S", "T", "U", "V", "W", "X",];
 function renderAlphabet(){
