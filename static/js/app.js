@@ -1,34 +1,38 @@
 /*** Fetching data -> refactor into module later ***/
-const parent = document.getElementById('results');
-const cors = 'https://cors-anywhere.herokuapp.com/';
-const endpoint = 'https://zoeken.oba.nl/api/v1/search/?q=';
-const query = 'star wars';
-const key = '1e19898c87464e239192c8bfe422f280';
-const secret = '4289fec4e962a33118340c888699438d';
-const detail = 'Default';
-const url = `${cors}${endpoint}${query}&authorization=${key}&detaillevel=${detail}&output=json`;
-
-const config = {
-  Authorization: `Bearer ${secret}`
-};
 
 function init(){
   renderAlphabet();
 }
 
-// fetch(url, config)
-//   .then(response => {
-//     return response.json();
-//   })
-//   .then(data => {
-//     render(data);
-//   })
-//   .catch(err => {
-//     console.log(err);
-//   });
+function fetchBook(name){
+  const cors = 'https://cors-anywhere.herokuapp.com/';
+  const endpoint = 'https://zoeken.oba.nl/api/v1/search/?q=';
+  const key = '1e19898c87464e239192c8bfe422f280';
+  const secret = '4289fec4e962a33118340c888699438d';
+  const detail = 'Default';
+
+  const config = {
+    Authorization: `Bearer ${secret}`
+  };
+
+  const url = `${cors}${endpoint}${name}&authorization=${key}&detaillevel=${detail}&output=json`;
+  
+  fetch(url, config)
+  .then(response => {
+    return response.json();
+  })
+  .then(data => {
+    render(data);
+  })
+  .catch(err => {
+    console.log(err);
+  });
+}
 
 // render data
 function render(data) {
+  const parent = document.getElementById('results');
+  parent.innerHTML = "";
   const results = data.results;
   console.dir(results);
   results.forEach((item, i) => {
@@ -57,6 +61,8 @@ function checkKey(e) {
       let word = display.innerHTML;
       word = word + letter;
       display.innerHTML = word;
+
+      fetchBook(word);
     }
     else if (e.keyCode == '37') {// left arrow
       alphabetArray.unshift(alphabetArray.splice(alphabetArray.length - 1, 1)[0]);
@@ -75,6 +81,8 @@ function removeLetter(){
   let word = display.innerHTML;
   word = word.substring(0, word.length - 1);
   display.innerHTML = word;
+
+  fetchBook(word);
 }
 
 const alphabetArray = ["Y", "Z", "A", "B", "C", "D", "E", "F", "G", "H", 
