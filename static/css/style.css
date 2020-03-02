@@ -5,6 +5,11 @@
   font-size: 5rem;
 }
 
+.grid>div{
+  min-height: 5rem;
+  min-width: 5rem;
+}
+
 #player{
   height: 5rem;
   width: 5rem;

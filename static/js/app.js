@@ -16,16 +16,16 @@ function init(){
   renderAlphabet();
 }
 
-fetch(url, config)
-  .then(response => {
-    return response.json();
-  })
-  .then(data => {
-    render(data);
-  })
-  .catch(err => {
-    console.log(err);
-  });
+// fetch(url, config)
+//   .then(response => {
+//     return response.json();
+//   })
+//   .then(data => {
+//     render(data);
+//   })
+//   .catch(err => {
+//     console.log(err);
+//   });
 
 // render data
 function render(data) {
@@ -47,7 +47,16 @@ function checkKey(e) {
     e = e || window.event;
 
     if (e.keyCode == '38') {// up arrow
-      renderAlphabet();
+      //animate jump
+
+      //get selected letter
+      const letter = alphabetArray[2];
+
+      //add letter to display
+      const display = document.getElementById('name');
+      let word = display.innerHTML;
+      word = word + letter;
+      display.innerHTML = word;
     }
     else if (e.keyCode == '37') {// left arrow
       alphabetArray.unshift(alphabetArray.splice(alphabetArray.length - 1, 1)[0]);
@@ -56,13 +65,21 @@ function checkKey(e) {
     else if (e.keyCode == '39') {// right arrow
       alphabetArray.push(alphabetArray.splice(0, 1)[0]);
       renderAlphabet();
+    }else if (e.keyCode == '8') {// right arrow
+      removeLetter();
     }
 }
 
-const alphabetArray = ["A", "B", "C", "D", "E", "F", "G", "H", 
+function removeLetter(){
+  const display = document.getElementById('name');
+  let word = display.innerHTML;
+  word = word.substring(0, word.length - 1);
+  display.innerHTML = word;
+}
+
+const alphabetArray = ["Y", "Z", "A", "B", "C", "D", "E", "F", "G", "H", 
                     "I", "J", "K", "L", "M", "N", "O", "P", 
-                    "Q", "R", "S", "T", "U", "V", "W", "X", 
-                    "Y", "Z"];
+                    "Q", "R", "S", "T", "U", "V", "W", "X",];
 function renderAlphabet(){
   const parent = document.getElementById('keyboard');
   
