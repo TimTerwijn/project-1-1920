@@ -12,9 +12,13 @@
   display: none;
 }
 
+.letter{
+  margin: 0;
+}
+
 #search_page{
-  font-size: 5rem;
-  background-color: cyan;
+  font-size: 4rem;
+  background-color: #99b1dd;
 }
 
 #background{
@@ -35,14 +39,20 @@
 }
 
 #keyboard>section{
+  display: grid;
   text-align: center;
-  min-width: 5rem;
-  min-height: 5rem;
+  width: 5rem;
+  height: 5rem;
   border: 9px solid #c75b2c;
   background-color: #f8a137;
   color: #c75b2c;
   border-color: #c75b2c black black #c75b2c;
-  text-shadow: 4px 4px black;
+  text-shadow: 3px 4px black;
+}
+
+#keyboard>section>p{
+  margin: 0;
+  align-self: center;
 }
 
 #results{

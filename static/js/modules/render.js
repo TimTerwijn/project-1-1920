@@ -14,9 +14,11 @@ export function alphabet(){
     //check for index out of bounds
     const html = `
             <section>
+              <p>
               ${
                 vars.alphabet[index]
               }
+              </p>
             </section>
           `;
 
