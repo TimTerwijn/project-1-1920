@@ -14,12 +14,18 @@
 
 #search_page{
   font-size: 5rem;
+  background-color: cyan;
+}
+
+#background{
+  border-bottom: 1rem solid green;
+  width: 100%;
+  margin-top: 5rem;
 }
 
 #player{
   height: 5rem;
   width: 5rem;
-  background-color: black;
 }
 
 #keyboard{
@@ -32,9 +38,16 @@
   text-align: center;
   min-width: 5rem;
   min-height: 5rem;
+  border: 9px solid #c75b2c;
+  background-color: #f8a137;
+  color: #c75b2c;
+  border-color: #c75b2c black black #c75b2c;
+  text-shadow: 4px 4px black;
 }
 
 #results{
+  background: white;
+  width: 100%;
   grid-template-columns: auto auto auto;
 }
 
