@@ -85,7 +85,6 @@ export function playerJump(){
   });
 
   if(!isJumping){
-    console.log("ye")
     flipBox.classList.add("marco-jump");
 
     //wait for animation to compleet, then remove class
@@ -121,7 +120,6 @@ export function books(books) {
   
   //render books
   const results = books.results;
-  console.dir(results);
   results.forEach((item, i) => {
     const html = `
             <a href="#details/${item.id}" </a>
@@ -187,8 +185,9 @@ export function detailsPage(bookId){
   const promise = api.fetchBookById(bookId);
   
   //show details of book
-  promise.then(book => {
+  promise.then(result => {
     //render book
+    const book = result.record;
     renderBookDetails(book);
   })
 
@@ -204,15 +203,13 @@ function renderBookDetails(book){
   //empty parent
   parent.innerHTML = "";
   
-  //render books
-  const results = book.results;
-  results.forEach((item, i) => {
-    const html = `
-            <section>${item.titles[0]}</section>
-            <img src="${
-                item.coverimages ? item.coverimages[1] : 'Geen samenvatting'
-              }">
-          `;
-    parent.insertAdjacentHTML('beforeend', html);
-  });
+  //render book
+  const html = `
+    <section>${book.titles[0]}</section>
+    <img src="${
+      book.coverimages ? book.coverimages[1] : 'Geen samenvatting'
+      }">
+  `;
+  
+  parent.insertAdjacentHTML('beforeend', html);
 }
