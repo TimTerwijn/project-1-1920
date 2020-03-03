@@ -29,26 +29,41 @@ export function alphabet(){
 export function walkLeft(){
   const flipBox = document.getElementById("player-flip-box");  
   
-  //check if Marco looks at the right direction
-  if(flipBox.className == ""){
-      //animate Marco
-      flipBox.className = "flip-box";
-    }else{
-      //move array to left
-      vars.alphabet.unshift(vars.alphabet.splice(vars.alphabet.length - 1, 1)[0]);
-        
-      //rerender alphabet
-      alphabet();
+  //check if Marco does't looks at the left direction
+  let looksLeft = false;
+  flipBox.classList.forEach(classItem => {
+    if(classItem == "flip-box"){
+      looksLeft = true;
     }
+  });
+
+  //check if Marco does't looks at the left direction
+  if(!looksLeft){
+      //animate Marco
+      flipBox.classList.add("flip-box");
+  }else{
+    //move array to left
+    vars.alphabet.unshift(vars.alphabet.splice(vars.alphabet.length - 1, 1)[0]);
+      
+    //rerender alphabet
+    alphabet();
+  }
 }
 
 export function walkRight(){
   const flipBox = document.getElementById("player-flip-box");  
-  
-  //check if Marco looks at the right direction
-  if(flipBox.className == "flip-box"){
-    //animate Marco
-    flipBox.className = "";
+
+  //check if Marco looks at the left direction
+  let looksLeft = false;
+  flipBox.classList.forEach(classItem => {
+    if(classItem == "flip-box"){
+      looksLeft = true;
+    }
+  });
+
+  if(looksLeft){
+    //animate Marco to look right
+    flipBox.classList.remove("flip-box");
   }else{
     //move array to right
     vars.alphabet.push(vars.alphabet.splice(0, 1)[0]);
@@ -59,7 +74,26 @@ export function walkRight(){
 }
 
 export function playerJump(){
-  //todo
+  const flipBox = document.getElementById("player-flip-box");
+
+  //check if Marco is already jumping
+  let isJumping = false;
+  flipBox.classList.forEach(classItem => {
+    if(classItem == "marco-jump"){
+      isJumping = true;
+    }
+  });
+
+  if(!isJumping){
+    console.log("ye")
+    flipBox.classList.add("marco-jump");
+
+    //wait for animation to compleet, then remove class
+    const promise = vars.sleep(2000);
+    promise.then(function(){
+      flipBox.classList.remove("marco-jump");
+    })  
+  }  
 }
 
 export function addLetterToWord(letter){
