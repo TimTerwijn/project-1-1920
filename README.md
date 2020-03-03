@@ -43,5 +43,6 @@ Go to index.html in your browser.
 * Fix github readme.  
 * Refactor code.  
 * Fix the API  
+* Use Routy
 * ~~Search for a monster from the osrsbox.com api.~~
 * Calculate monster and player accuracies.
