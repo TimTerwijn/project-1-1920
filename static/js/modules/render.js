@@ -27,19 +27,35 @@ export function alphabet(){
 }
 
 export function walkLeft(){
-  //move array to left
-  vars.alphabet.unshift(vars.alphabet.splice(vars.alphabet.length - 1, 1)[0]);
+  const flipBox = document.getElementById("player-flip-box");  
   
-  //rerender alphabet
-  alphabet();
+  //check if Marco looks at the right direction
+  if(flipBox.className == ""){
+      //animate Marco
+      flipBox.className = "flip-box";
+    }else{
+      //move array to left
+      vars.alphabet.unshift(vars.alphabet.splice(vars.alphabet.length - 1, 1)[0]);
+        
+      //rerender alphabet
+      alphabet();
+    }
 }
 
 export function walkRight(){
-  //move array to right
-  vars.alphabet.push(vars.alphabet.splice(0, 1)[0]);
+  const flipBox = document.getElementById("player-flip-box");  
   
-  //rerender alphabet
-  alphabet();
+  //check if Marco looks at the right direction
+  if(flipBox.className == "flip-box"){
+    //animate Marco
+    flipBox.className = "";
+  }else{
+    //move array to right
+    vars.alphabet.push(vars.alphabet.splice(0, 1)[0]);
+    
+    //rerender alphabet
+    alphabet();
+  }
 }
 
 export function playerJump(){
