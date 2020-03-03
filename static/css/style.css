@@ -28,6 +28,12 @@
   width: 100%;
 }
 
+#keyboard>section{
+  text-align: center;
+  min-width: 5rem;
+  min-height: 5rem;
+}
+
 #results{
   grid-template-columns: auto auto auto;
 }
