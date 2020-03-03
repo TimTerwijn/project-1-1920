@@ -1,4 +1,5 @@
 /*** Fetching data -> refactor into module later ***/
+import * as router from "./modules/router.js";
 import {checkKey} from "./modules/controller.js";
 import * as render from "./modules/render.js";
 import * as vars from "./modules/vars.js";

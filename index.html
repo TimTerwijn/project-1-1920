@@ -6,7 +6,16 @@
     <link rel="stylesheet" href="static/css/style.css">
   </head>
   <body>
-    <div class="grid">
+    <div id="start_page">
+      <div class="grid page">
+        <section>Weet je al waar je jouw speekbeurt over wilt houden?</section>
+        <button><a href="#yes">Ja!</a></button>
+        <button>Nee nog niet</button>
+      </div>
+    </div>
+
+    <div id="search_page" class="hidden">
+      <div class="grid page">
         <div id="name"></div><!-- name  -->
         <div id="keyboard" class="grid"><!-- keyboard  -->
             <section>A - Z</section>
@@ -15,6 +24,11 @@
             <section id="player"></section>
         </div>
         <div id="results" class="grid"></div><!-- results  -->
+      </div>
+    </div>
+
+    <div id="details_page" class="hidden">
+      <div class="grid page"></div>
     </div>
 
     <script type="module" src="static/js/app.js"></script>

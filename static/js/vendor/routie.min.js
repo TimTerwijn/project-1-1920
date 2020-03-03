@@ -5,7 +5,7 @@
  * copyright Greg Allen 2016
  * MIT License
 */
-var Routie = function(a, b) {
+export var Routie = function(a, b) {
   var c = [],
     d = {},
     e = 'routie',

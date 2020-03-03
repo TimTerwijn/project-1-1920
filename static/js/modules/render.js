@@ -78,3 +78,39 @@ export function books(books) {
     parent.insertAdjacentHTML('beforeend', html);
   });
 }
+
+function toggleVisibility(element){
+  element.classList.toggle("hidden");
+}
+
+function hide(element){
+  element.className = "hidden";
+}
+
+function hideAllPages(){
+  const startPage = document.getElementById("start_page");
+  const searchPage = document.getElementById("search_page");
+  const detailsPage = document.getElementById("details_page");
+
+  hide(startPage);
+  hide(searchPage);
+  hide(detailsPage);
+}
+
+export function startPage(){
+  //hide all pages
+  hideAllPages();
+
+  //show start page
+  const startPage = document.getElementById("start_page");
+  toggleVisibility(startPage);
+}
+
+export function searchPage(){
+  //hide all pages
+  hideAllPages();
+
+  //show start page
+  const searchPage = document.getElementById("search_page");
+  toggleVisibility(searchPage);
+}

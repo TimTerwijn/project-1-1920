@@ -1,18 +1,17 @@
-import * as render from "./render.js";
-
 export async function fetchBook(name){
     const cors = 'https://cors-anywhere.herokuapp.com/';
     const endpoint = 'https://zoeken.oba.nl/api/v1/search/?q=';
-    const key = '1e19898c87464e239192c8bfe422f280';
-    const secret = '4289fec4e962a33118340c888699438d';
-    const detail = 'Default';
+    const key = 'd7519ea81ad4e06ab5e5dac46ddeb63a';
+    const secret = '274658a302d1cfe874e73aed9d6ccef5';
+    const detail = 'Minimum';
   
     const config = {
       Authorization: `Bearer ${secret}`
     };
   
-    const url = `${cors}${endpoint}${name}&authorization=${key}&detaillevel=${detail}&output=json`;
-    
+    const url = `${cors}${endpoint}${name}&p=jeugd&authorization=${key}&detaillevel=${detail}&output=json`;
+    console.log(url);
+
     //set loading screen
     const parent = document.getElementById('results');
     parent.innerHTML = "Loading please wait..."
