@@ -1,76 +1,57 @@
 /*** Fetching data -> refactor into module later ***/
-import {fetchBook} from "./modules/api.js";
+import {checkKey} from "./modules/controller.js";
+import * as render from "./modules/render.js";
+import * as vars from "./modules/vars.js";
+import * as api from "./modules/api.js";
 
 function init(){
-  renderAlphabet();
+  render.alphabet();
 }
 
-
-
-
-
-document.onkeydown = checkKey;
-function checkKey(e) {
-
-    e = e || window.event;
-
-    if (e.keyCode == '38') {// up arrow
-      //animate jump
-
-      //get selected letter
-      const letter = alphabetArray[2];
-
-      //add letter to display
-      const display = document.getElementById('name');
-      let word = display.innerHTML;
-      word = word + letter;
-      display.innerHTML = word;
-
-      fetchBook(word);
-    }
-    else if (e.keyCode == '37') {// left arrow
-      alphabetArray.unshift(alphabetArray.splice(alphabetArray.length - 1, 1)[0]);
-      renderAlphabet();
-    }
-    else if (e.keyCode == '39') {// right arrow
-      alphabetArray.push(alphabetArray.splice(0, 1)[0]);
-      renderAlphabet();
-    }else if (e.keyCode == '8') {// right arrow
-      removeLetter();
-    }
+export function onLeftKey(){
+  render.walkLeft();  
 }
 
-function removeLetter(){
+export function onRightKey(){
+  render.walkRight(); 
+}
+
+export function onTopKey(){
+  //animate jump
+  render.playerJump();
+
+  //get letter
+  const letter = vars.alphabet[2];
+
+  //add letter to word
+  render.addLetterToWord(letter);
+
+  //get word
   const display = document.getElementById('name');
-  let word = display.innerHTML;
-  word = word.substring(0, word.length - 1);
-  display.innerHTML = word;
+  const word = display.innerHTML;
 
-  fetchBook(word);
+  //search books in api
+  const promise = api.fetchBook(word);
+  promise.then(books => {
+    //render books
+    render.books(books);
+  })  
 }
 
-const alphabetArray = ["Y", "Z", " ", "A", "B", "C", "D", "E", "F", "G", "H", 
-                    "I", "J", "K", "L", "M", "N", "O", "P", 
-                    "Q", "R", "S", "T", "U", "V", "W", "X",];
-function renderAlphabet(){
-  const parent = document.getElementById('keyboard');
-  
-  //clear div
-  parent.innerHTML = "";
+export function onBackspaceKey(){
+  //remove last letter from word
+  render.removeLastLetter();
 
-  //add data
-  for (let index = 0; index < 5; index++) {
-    //check for index out of bounds
-    const html = `
-            <section>
-              ${
-                alphabetArray[index]
-              }
-            </section>
-          `;
+  //get word
+  const display = document.getElementById('name');
+  const word = display.innerHTML;
 
-    parent.insertAdjacentHTML('beforeend', html);    
-  } 
+  //search books in api
+  const promise = api.fetchBook(word);
+  promise.then(books => {
+    //render books
+    render.books(books);
+  }) 
 }
 
-init()
+init();

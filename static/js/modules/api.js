@@ -1,6 +1,6 @@
-import {renderData} from "./render.js";
+import * as render from "./render.js";
 
-export function fetchBook(name){
+export async function fetchBook(name){
     const cors = 'https://cors-anywhere.herokuapp.com/';
     const endpoint = 'https://zoeken.oba.nl/api/v1/search/?q=';
     const key = '1e19898c87464e239192c8bfe422f280';
@@ -13,17 +13,22 @@ export function fetchBook(name){
   
     const url = `${cors}${endpoint}${name}&authorization=${key}&detaillevel=${detail}&output=json`;
     
+    //set loading screen
     const parent = document.getElementById('results');
     parent.innerHTML = "Loading please wait..."
-  
-    fetch(url, config)
-    .then(response => {
-        return response.json();
-    })
-    .then(data => {
-        renderData(data);
-    })
-    .catch(err => {
-        console.log(err);
-    });
-  }
+
+    //do an api call
+    try {
+        const response = await fetch(url, config);
+        //handle client error with fetch
+        if (response.ok) {
+            return response.json();
+        }
+        else {
+            return Promise.reject(response);
+        }
+    }
+    catch (err) {
+        console.log("something went wrong. ", err);
+    }
+}
