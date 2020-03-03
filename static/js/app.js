@@ -18,25 +18,37 @@ export function onRightKey(){
 }
 
 export function onTopKey(){
-  //animate jump
-  render.playerJump();
+  const flipBox = document.getElementById("player-flip-box");
 
-  //get letter
-  const letter = vars.alphabet[2];
+  //stop if Marco is already jumping
+  let isJumping = false;
+  flipBox.classList.forEach(classItem => {
+    if(classItem == "marco-jump"){
+      isJumping = true;
+    }
+  });
 
-  //add letter to word
-  render.addLetterToWord(letter);
+  if(!isJumping){
+    //animate jump
+    render.playerJump();
 
-  //get word
-  const display = document.getElementById('name');
-  const word = display.innerHTML;
+    //get letter
+    const letter = vars.alphabet[2];
 
-  //search books in api
-  // const promise = api.fetchBookByName(word);
-  // promise.then(books => {
-  //   //render books
-  //   render.books(books);
-  // })  
+    //add letter to word
+    render.addLetterToWord(letter);
+
+    //get word
+    const display = document.getElementById('name');
+    const word = display.innerHTML;
+
+    //search books in api
+    // const promise = api.fetchBookByName(word);
+    // promise.then(books => {
+    //   //render books
+    //   render.books(books);
+    // })  
+  }
 }
 
 export function onBackspaceKey(){
