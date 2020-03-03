@@ -1,4 +1,5 @@
 import * as vars from "./vars.js";
+import * as api from "./api.js";
 
 //render alphabet
 export function alphabet(){
@@ -71,9 +72,11 @@ export function books(books) {
   console.dir(results);
   results.forEach((item, i) => {
     const html = `
-            <img src="${
+            <a href="#details/${item.id}" </a>
+              <img src="${
                 item.coverimages ? item.coverimages[1] : 'Geen samenvatting'
               }">
+            </a>
           `;
     parent.insertAdjacentHTML('beforeend', html);
   });
@@ -113,4 +116,51 @@ export function searchPage(){
   //show start page
   const searchPage = document.getElementById("search_page");
   toggleVisibility(searchPage);
+}
+
+export function randomSubjectsPage(){
+  //hide all pages
+  hideAllPages();
+
+  //show random subjects page
+  const randomSubjectsPage = document.getElementById("random_subject_page");
+  toggleVisibility(randomSubjectsPage);
+}
+
+export function detailsPage(bookId){
+  //hide all pages
+  hideAllPages();
+  
+  //get book from api
+  const promise = api.fetchBookById(bookId);
+  
+  //show details of book
+  promise.then(book => {
+    //render book
+    renderBookDetails(book);
+  })
+
+  //show details page
+  const detailsPage = document.getElementById("details_page");
+  toggleVisibility(detailsPage);
+}
+
+function renderBookDetails(book){
+  //get parent
+  const parent = document.getElementById('book_details');
+  
+  //empty parent
+  parent.innerHTML = "";
+  
+  //render books
+  const results = book.results;
+  results.forEach((item, i) => {
+    const html = `
+            <section>${item.titles[0]}</section>
+            <img src="${
+                item.coverimages ? item.coverimages[1] : 'Geen samenvatting'
+              }">
+          `;
+    parent.insertAdjacentHTML('beforeend', html);
+  });
 }

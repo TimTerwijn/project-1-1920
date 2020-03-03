@@ -32,7 +32,7 @@ export function onTopKey(){
   const word = display.innerHTML;
 
   //search books in api
-  const promise = api.fetchBook(word);
+  const promise = api.fetchBookByName(word);
   promise.then(books => {
     //render books
     render.books(books);
@@ -48,7 +48,7 @@ export function onBackspaceKey(){
   const word = display.innerHTML;
 
   //search books in api
-  const promise = api.fetchBook(word);
+  const promise = api.fetchBookByName(word);
   promise.then(books => {
     //render books
     render.books(books);
