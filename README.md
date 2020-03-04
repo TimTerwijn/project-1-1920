@@ -40,9 +40,11 @@ Put code on a server.
 Go to index.html in your browser.  
 
 ## Roadmap
-* Fix github readme.  
-* Refactor code.  
-* Fix the API  
-* Use Routy
+* ~~Fix github readme.~~  
+* ~~Refactor code.~~  
+* ~~Fix the API~~  
+* ~~Use Routy~~
+* Work on details page  
+* Write arrow tutorial. 
 * ~~Search for a monster from the osrsbox.com api.~~
 * Calculate monster and player accuracies.
