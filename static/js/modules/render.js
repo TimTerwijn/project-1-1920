@@ -1,7 +1,7 @@
 import * as vars from "./vars.js";
 import * as api from "./api.js";
 
-//render alphabet
+//render list of subjects
 export function subjects(){
   //get keyboard parent
   const parent = document.getElementById('keyboard');
@@ -17,6 +17,31 @@ export function subjects(){
               <p>
               ${
                 vars.subjects[index].name
+              }
+              </p>
+            </section>
+          `;
+
+    parent.insertAdjacentHTML('beforeend', html);    
+  } 
+}
+
+//render more of that subject
+export function subject(subject){
+  //get keyboard parent
+  const parent = document.getElementById('keyboard');
+  
+  //clear parent
+  parent.innerHTML = "";
+
+  //add data
+  for (let index = 0; index < 3; index++) {
+    //check for index out of bounds
+    const html = `
+            <section>
+              <p>
+              ${
+                subject[index]
               }
               </p>
             </section>
@@ -43,10 +68,22 @@ export function walkLeft(){
       flipBox.classList.add("flip-box");
   }else{
     //move array to left
-    vars.subjects.unshift(vars.subjects.splice(vars.subjects.length - 1, 1)[0]);
+
+    //check if a subject is not selected
+    if(!vars.isSubjectSelected()){
+      vars.subjects.unshift(vars.subjects.splice(vars.subjects.length - 1, 1)[0]);
       
-    //rerender subjects
-    subjects();
+      //rerender subjects
+      subjects();
+    }else{
+      //subject is already selected
+      const subject = vars.subjects[1].value;
+      
+      subject.unshift(subject.splice(subject.length - 1, 1)[0]);
+
+      //rerender subjects
+      this.subject(subject);
+    }
   }
 }
 
@@ -66,10 +103,22 @@ export function walkRight(){
     flipBox.classList.remove("flip-box");
   }else{
     //move array to right
-    vars.subjects.push(vars.subjects.splice(0, 1)[0]);
-    
-    //rerender subjects
-    subjects();
+
+    //check if a subject is not selected
+    if(!vars.isSubjectSelected()){
+      vars.subjects.push(vars.subjects.splice(0, 1)[0]);
+      
+      //rerender subjects
+      subjects();
+    }else{
+      //subject is already selected
+      const subject = vars.subjects[1].value;
+      
+      subject.push(subject.splice(0, 1)[0]);
+
+      //rerender subjects
+      this.subject(subject);
+    }
   }
 }
 
@@ -93,21 +142,6 @@ export function playerJump(){
       flipBox.classList.remove("marco-jump");
     })  
   }  
-}
-
-export function addLetterToWord(letter){
-  //add letter to display
-  const display = document.getElementById('name');
-  let word = display.innerHTML;
-  word = word + letter;
-  display.innerHTML = word;
-}
-
-export function removeLastLetter(){
-  const display = document.getElementById('name');
-  let word = display.innerHTML;
-  word = word.substring(0, word.length - 1);
-  display.innerHTML = word;
 }
 
 // render books
@@ -141,22 +175,11 @@ function hide(element){
 }
 
 function hideAllPages(){
-  const startPage = document.getElementById("start_page");
   const searchPage = document.getElementById("search_page");
   const detailsPage = document.getElementById("details_page");
 
-  hide(startPage);
   hide(searchPage);
   hide(detailsPage);
-}
-
-export function startPage(){
-  //hide all pages
-  hideAllPages();
-
-  //show start page
-  const startPage = document.getElementById("start_page");
-  toggleVisibility(startPage);
 }
 
 export function searchPage(){
@@ -166,15 +189,6 @@ export function searchPage(){
   //show start page
   const searchPage = document.getElementById("search_page");
   toggleVisibility(searchPage);
-}
-
-export function randomSubjectsPage(){
-  //hide all pages
-  hideAllPages();
-
-  //show random subjects page
-  const randomSubjectsPage = document.getElementById("random_subject_page");
-  toggleVisibility(randomSubjectsPage);
 }
 
 export function detailsPage(bookId){

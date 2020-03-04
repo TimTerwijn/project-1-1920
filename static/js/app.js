@@ -31,40 +31,26 @@ export function onTopKey(){
   if(!isJumping){
     //animate jump
     render.playerJump();
+    //check if you already selected a subject
+    if(!vars.isSubjectSelected()){      
+      const subject = vars.subjects[1];
+      
+      //select subject
+      subject.selected = true;
 
-    //get letter
-    const letter = vars.alphabet[2];
+      //open subject
+      render.subject(subject.value);
+    }else{
+      const subjectName = vars.subjects[1].value[1];
 
-    //add letter to word
-    render.addLetterToWord(letter);
-
-    //get word
-    const display = document.getElementById('name');
-    const word = display.innerHTML;
-
-    //search books in api
-    const promise = api.fetchBookByName(word);
-    promise.then(books => {
-      //render books
-      render.books(books);
-    })  
+      //search books in api
+      const promise = api.fetchBookByName(subjectName);
+      promise.then(books => {
+        //render books
+        render.books(books);
+      })
+    }      
   }
-}
-
-export function onBackspaceKey(){
-  //remove last letter from word
-  render.removeLastLetter();
-
-  //get word
-  const display = document.getElementById('name');
-  const word = display.innerHTML;
-
-  //search books in api
-  const promise = api.fetchBookByName(word);
-  promise.then(books => {
-    //render books
-    render.books(books);
-  }) 
 }
 
 init();

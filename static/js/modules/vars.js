@@ -1,3 +1,6 @@
+//set this to CHILD to 
+let subjectState = "PARENT";
+
 const dieren = [
     "Aasgier", "Beverrat", "Capibara", "Doodshoofdaap", "Eikelmuis", "Fluiteend", "Gifkikker", "Heilige ibis", 
     "Juffer kraanvogel", "Kleine torenvalk", "Koereiger", "Leeuwaap", "Muskusos", "Nandoe", "Oeistitie", 
@@ -24,11 +27,23 @@ const stoer = [
 ];
     
 export const subjects = [
-    {"name" : "Dieren", "value" : dieren},
-    {"name" : "Vakanties", "value" : vakanties},
-    {"name" : "Boeken", "value" : boeken},
-    {"name" : "Stoer", "value" : stoer},
+    {"name" : "Dieren", "value" : dieren, "selected" : false},
+    {"name" : "Vakanties", "value" : vakanties, "selected" : false},
+    {"name" : "Boeken", "value" : boeken, "selected" : false},
+    {"name" : "Stoer", "value" : stoer, "selected" : false},
 ]
+
+export function isSubjectSelected(){
+    let isSubjectSelected = false;
+    
+    subjects.forEach(subject => {
+        if(subject.selected){
+            isSubjectSelected = true;
+        }
+    });
+
+    return isSubjectSelected;
+}
 
 export async function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
