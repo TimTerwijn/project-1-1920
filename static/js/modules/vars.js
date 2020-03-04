@@ -17,7 +17,7 @@ const vakanties = [
 const boeken = [
     "Alice in Wonderland", "De brief voor de koning", "De GVR", "Dolfje Weekwolfje", "Harry Potter", "Hoe overleef ik", 
     "Koning van Katoren", "Kruistocht in spijkerbroek", "Matilda", "Minoes", "Narnia", "Pippi Langkous", "Pluk van de Petteflet", 
-    "Polleke", "Sjakie en de chocoladefabroek", "Grimm", "De Hobbit", "Lord of the Rings", 
+    "Polleke", "Grimm", "De Hobbit", "Lord of the Rings", 
 ];
 
 const stoer = [

@@ -17,7 +17,6 @@
 }
 
 #search_page{
-  font-size: 4rem;
   background-color: #99b1dd;
 }
 
@@ -40,16 +39,24 @@
 
 /* subject box */
 #keyboard>section{
+  font-size: 3rem;
   display: grid;
   text-align: center;
-  min-width: 18rem;
-  height: 5rem;
+  width: 18rem;
+  height: 8rem;
   border: 9px solid #c75b2c;
   background-color: #f8a137;
   color: #c75b2c;
   border-color: #c75b2c black black #c75b2c;
   text-shadow: 3px 4px black;
   padding: 1px;
+  align-self: center;
+}
+
+#keyboard>section:nth-child(2){
+  font-size: 4rem;
+  width: 24rem;
+  height: 10rem;
 }
 
 /* text inside box */
