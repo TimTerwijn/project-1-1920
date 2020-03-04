@@ -6,7 +6,7 @@ import * as vars from "./modules/vars.js";
 import * as api from "./modules/api.js";
 
 function init(){
-  render.alphabet();
+  render.subjects();
 }
 
 export function onLeftKey(){

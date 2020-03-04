@@ -2,7 +2,7 @@ import * as vars from "./vars.js";
 import * as api from "./api.js";
 
 //render alphabet
-export function alphabet(){
+export function subjects(){
   //get keyboard parent
   const parent = document.getElementById('keyboard');
   
@@ -10,13 +10,13 @@ export function alphabet(){
   parent.innerHTML = "";
 
   //add data
-  for (let index = 0; index < 5; index++) {
+  for (let index = 0; index < 3; index++) {
     //check for index out of bounds
     const html = `
             <section>
               <p>
               ${
-                vars.alphabet[index]
+                vars.subjects[index].name
               }
               </p>
             </section>
@@ -43,10 +43,10 @@ export function walkLeft(){
       flipBox.classList.add("flip-box");
   }else{
     //move array to left
-    vars.alphabet.unshift(vars.alphabet.splice(vars.alphabet.length - 1, 1)[0]);
+    vars.subjects.unshift(vars.subjects.splice(vars.subjects.length - 1, 1)[0]);
       
-    //rerender alphabet
-    alphabet();
+    //rerender subjects
+    subjects();
   }
 }
 
@@ -66,10 +66,10 @@ export function walkRight(){
     flipBox.classList.remove("flip-box");
   }else{
     //move array to right
-    vars.alphabet.push(vars.alphabet.splice(0, 1)[0]);
+    vars.subjects.push(vars.subjects.splice(0, 1)[0]);
     
-    //rerender alphabet
-    alphabet();
+    //rerender subjects
+    subjects();
   }
 }
 

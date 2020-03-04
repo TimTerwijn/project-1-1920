@@ -33,23 +33,26 @@
 }
 
 #keyboard{
-  grid-template-columns: auto auto auto auto auto;
-  justify-content: space-evenly;	
+  grid-template-columns: 33% auto 33%;
+  justify-content: space-between;
   width: 100%;
 }
 
+/* subject box */
 #keyboard>section{
   display: grid;
   text-align: center;
-  width: 5rem;
+  min-width: 18rem;
   height: 5rem;
   border: 9px solid #c75b2c;
   background-color: #f8a137;
   color: #c75b2c;
   border-color: #c75b2c black black #c75b2c;
   text-shadow: 3px 4px black;
+  padding: 1px;
 }
 
+/* text inside box */
 #keyboard>section>p{
   margin: 0;
   align-self: center;
