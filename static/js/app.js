@@ -63,7 +63,13 @@ export function onTopKey(){
 
     //check if you are in subject menu 3, EX: book 1 of horse, book 2 of horse
     else if(vars.menu == 3){
-      alert("klick book")
+      //get book url
+      const parentElement = document.getElementById("keyboard");
+      const childElement = parentElement.getElementsByTagName('a')[1];
+      const href = childElement.getAttribute("href");
+
+      //go to url
+      routie(href);
     }
     
     //lastly go menu higher EX: animal -> dog -> book of dog
