@@ -69,13 +69,15 @@ export function walkLeft(){
   }else{
     //move array to left
 
-    //check if a subject is not selected
-    if(!vars.isSubjectSelected()){
+    //check if you are in subject menu 1, EX: Animal, country
+    if(vars.menu == 1){
       vars.subjects.unshift(vars.subjects.splice(vars.subjects.length - 1, 1)[0]);
       
       //rerender subjects
       subjects();
-    }else{
+    }
+    //check if you are in subject menu 2, EX: Horse, Dog
+    else if(vars.menu == 2){
       //subject is already selected
       const subject = vars.subjects[1].value;
       
@@ -83,6 +85,14 @@ export function walkLeft(){
 
       //rerender subjects
       this.subject(subject);
+    }
+    //check if you are in subject menu 3, EX: book 1 of horse, book 2 of horse
+    else if(vars.menu == 3){
+      //swap books
+      vars.books.unshift(vars.books.splice(vars.books.length - 1, 1)[0]);
+          
+      //render books
+      books();
     }
   }
 }
@@ -104,13 +114,15 @@ export function walkRight(){
   }else{
     //move array to right
 
-    //check if a subject is not selected
-    if(!vars.isSubjectSelected()){
+    //check if you are in subject menu 1, EX: Animal, country
+    if(vars.menu == 1){
       vars.subjects.push(vars.subjects.splice(0, 1)[0]);
       
       //rerender subjects
       subjects();
-    }else{
+    }
+    //check if you are in subject menu 2, EX: Horse, Dog
+    else if(vars.menu == 2){
       //subject is already selected
       const subject = vars.subjects[1].value;
       
@@ -118,6 +130,14 @@ export function walkRight(){
 
       //rerender subjects
       this.subject(subject);
+    }
+    //check if you are in subject menu 3, EX: book 1 of horse, book 2 of horse
+    else if(vars.menu == 3){
+      //swap books
+      vars.books.push(vars.books.splice(0, 1)[0]);
+          
+      //render books
+      books();
     }
   }
 }
@@ -146,16 +166,20 @@ export function playerJump(){
 }
 
 // render books
-export function books(books) {
+export function books() {
+  //get books
+  const books = vars.books;
+  
   //get parent
-  const parent = document.getElementById('results');
+  const parent = document.getElementById('keyboard');
   
   //empty parent
   parent.innerHTML = "";
   
   //render books
-  const results = books.results;
-  results.forEach((item, i) => {
+  for (let index = 0; index < 3; index++) {
+    const item = books[index];
+    
     const html = `
             <a href="#details/${item.id}" </a>
               <img src="${
@@ -164,7 +188,7 @@ export function books(books) {
             </a>
           `;
     parent.insertAdjacentHTML('beforeend', html);
-  });
+  }
 }
 
 function toggleVisibility(element){

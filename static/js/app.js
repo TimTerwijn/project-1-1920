@@ -32,8 +32,8 @@ export function onTopKey(){
     //animate jump
     render.playerJump();
     
-    //check if you already selected a subject
-    if(!vars.isSubjectSelected()){      
+    //check if you are in subject menu 1, EX: Animal, country
+    if(vars.menu == 1){      
       const subject = vars.subjects[1];
       
       //select subject
@@ -41,21 +41,34 @@ export function onTopKey(){
 
       //open subject
       render.subject(subject.value);
-    }else{
+    }
+    //check if you are in subject menu 2, EX: Horse, Dog
+    else if(vars.menu == 2){
       const subjectName = vars.subjects[1].value[1];
 
       //search books in api
       const promise = api.fetchBookByName(subjectName);
       try{
         promise.then(books => {
+          //safe books in storage
+          vars.setBooks(books.results);
+          
           //render books
-          render.books(books);
+          render.books();
         })
       }catch (err) {
           messages.innerHTML = "something went wrong.";
       }
-    }      
-  }
+    } 
+
+    //check if you are in subject menu 3, EX: book 1 of horse, book 2 of horse
+    else if(vars.menu == 3){
+      alert("klick book")
+    }
+    
+    //lastly go menu higher EX: animal -> dog -> book of dog
+    vars.nextMenu();
+  }  
 }
 
 init();
