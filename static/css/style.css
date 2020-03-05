@@ -99,6 +99,12 @@
   color: #ffd5d5;
 }
 
+#keyboard > .no-img:nth-child(2){
+  font-size: 1.4rem;
+  width: 7.5rem;
+  height: 10rem;
+}
+
 #keyboard img{
   height: 100%;
 }
