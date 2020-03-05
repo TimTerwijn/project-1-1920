@@ -191,9 +191,13 @@ export function books() {
   for (let index = 0; index < 3; index++) {
     const item = books[index];
     let html = "";
+
+    const badId1 = "842828168";
+    const badId2 = "297712861";
+    const imgId = item.coverimages[1].substring(81, 90);
     
-    //check if there is no image
-    if(item.coverimages[1] == null){
+    //check if there is no image, or a bad images
+    if(item.coverimages[1] == null || imgId == badId1 || imgId == badId2){
       html = `
         <a class="no-img" href="#details/${item.id}">
           <p>${item.titles[0]}</p>

@@ -97,10 +97,11 @@
   font-size: 0.9rem;
   background-color: #fe3838;
   color: #ffd5d5;
+  text-align: center;
 }
 
 #keyboard > .no-img:nth-child(2){
-  font-size: 1.4rem;
+  font-size: 1.1rem;
   width: 7.5rem;
   height: 10rem;
 }
