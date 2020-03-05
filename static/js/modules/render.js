@@ -169,24 +169,47 @@ export function playerJump(){
 export function books() {
   //get books
   const books = vars.books;
+
+  //check if books is atleast 5 width
+  if(books.length < 3){
+    const loops = 3 - books.length;
+    for (let index = 0; index < loops; index++) {
+      books[books.length] = {
+        "id" : "",
+        "coverimages" : "https",
+      }
+    }
+  }
   
   //get parent
   const parent = document.getElementById('keyboard');
   
   //empty parent
   parent.innerHTML = "";
-  
+
   //render books
   for (let index = 0; index < 3; index++) {
     const item = books[index];
+    let html = "";
     
-    const html = `
-            <a href="#details/${item.id}" </a>
-              <img src="${
-                item.coverimages ? item.coverimages[1] : 'Geen samenvatting'
-              }">
-            </a>
-          `;
+    //check if there is no image
+    if(item.coverimages[1] == null){
+      html = `
+        <a class="no-img" href="#details/${item.id}">
+          <p>${item.titles[0]}</p>
+        </a>
+      `;
+    }
+    else{
+      html = `
+        <a href="#details/${item.id}">
+          <img src="${
+            item.coverimages ? item.coverimages[1] : 'Geen samenvatting'
+          }">
+        </a>
+      `;
+    }
+    
     parent.insertAdjacentHTML('beforeend', html);
   }
 }

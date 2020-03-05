@@ -54,6 +54,7 @@
   align-self: center;
 }
 
+/* middle box */
 #keyboard>section:nth-child(2){
   font-size: 4rem;
   width: 24rem;
@@ -64,6 +65,42 @@
 #keyboard>section>p{
   margin: 0;
   align-self: center;
+}
+
+/* images of books */
+#keyboard>a{
+  display: grid;
+  font-size: 3rem;
+  width: 6rem;
+  height: 8rem;
+  padding: 1px;
+  align-self: center;
+  justify-items: center;
+}
+
+/* middel books */
+#keyboard>a:nth-child(2){
+  font-size: 4rem;
+  width: 7.5rem;
+  height: 10rem;
+}
+
+/* text inside box */
+#keyboard>section>p{
+  margin: 0;
+  align-self: center;
+}
+
+/* images of books */
+#keyboard > .no-img{
+  border: 6px groove #ffefb8;
+  font-size: 0.9rem;
+  background-color: #fe3838;
+  color: #ffd5d5;
+}
+
+#keyboard img{
+  height: 100%;
 }
 
 #results{
