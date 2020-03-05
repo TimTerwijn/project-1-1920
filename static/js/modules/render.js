@@ -133,6 +133,7 @@ export function playerJump(){
     }
   });
 
+  //if marco does not jump
   if(!isJumping){
     flipBox.classList.add("marco-jump");
 
@@ -198,16 +199,20 @@ export function detailsPage(bookId){
   //get book from api
   const promise = api.fetchBookById(bookId);
   
-  //show details of book
-  promise.then(result => {
-    //render book
-    const book = result.record;
-    renderBookDetails(book);
-  })
+  try{
+    //show details of book
+    promise.then(result => {
+      //render book
+      const book = result.record;
+      renderBookDetails(book);
+    })
 
-  //show details page
-  const detailsPage = document.getElementById("details_page");
-  toggleVisibility(detailsPage);
+    //show details page
+    const detailsPage = document.getElementById("details_page");
+    toggleVisibility(detailsPage);
+  }catch (err) {
+    messages.innerHTML = "something went wrong. ";
+  }
 }
 
 function renderBookDetails(book){

@@ -18,6 +18,7 @@
 
 #search_page{
   background-color: #99b1dd;
+  padding-top: 1rem;
 }
 
 #background{
@@ -69,6 +70,12 @@
   background: white;
   width: 100%;
   grid-template-columns: auto auto auto;
+}
+
+#messages{
+  width: 100%;
+  text-align: left;
+  background-color: white;
 }
 
 /* Animations */

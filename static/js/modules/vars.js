@@ -1,5 +1,5 @@
 //set this to CHILD to 
-let subjectState = "PARENT";
+let subjectState = "0";
 
 const dieren = [
     "Aasgier", "Beverrat", "Capibara", "Doodshoofdaap", "Eikelmuis", "Fluiteend", "Gifkikker", "Heilige ibis", 

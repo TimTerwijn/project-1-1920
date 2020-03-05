@@ -12,14 +12,15 @@ export async function fetchBookByName(name){
     const url = `${cors}${endpoint}${name}&p=jeugd&authorization=${key}&detaillevel=${detail}&output=json`;
 
     //set loading screen
-    const parent = document.getElementById('results');
-    parent.innerHTML = "Loading please wait..."
+    const messages = document.getElementById('messages');
+    messages.innerHTML = "Loading please wait..."
 
     //do an api call
     try {
         const response = await fetch(url, config);
         //handle client error with fetch
         if (response.ok) {
+            messages.innerHTML = ""
             return response.json();
         }
         else {
@@ -27,7 +28,7 @@ export async function fetchBookByName(name){
         }
     }
     catch (err) {
-        console.log("something went wrong. ", err);
+        messages.innerHTML = "something went wrong. " + err;
     }
 }
 
@@ -45,14 +46,15 @@ export async function fetchBookById(id){
     const url = `${cors}${endpoint}${id}&authorization=${key}&detaillevel=${detail}&output=json`;
 
     //set loading screen
-    const detailsPage = document.getElementById('book_details');
-    detailsPage.innerHTML = "Loading please wait..."
+    const messages = document.getElementById('messages');
+    messages.innerHTML = "Loading please wait..."
 
     //do an api call
     try {
         const response = await fetch(url, config);
         //handle client error with fetch
         if (response.ok) {
+            messages.innerHTML = ""
             return response.json();
         }
         else {
@@ -60,6 +62,6 @@ export async function fetchBookById(id){
         }
     }
     catch (err) {
-        console.log("something went wrong. ", err);
+        messages.innerHTML = "something went wrong. " + err;
     }
 }

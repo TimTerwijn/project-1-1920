@@ -31,6 +31,7 @@ export function onTopKey(){
   if(!isJumping){
     //animate jump
     render.playerJump();
+    
     //check if you already selected a subject
     if(!vars.isSubjectSelected()){      
       const subject = vars.subjects[1];
@@ -45,10 +46,14 @@ export function onTopKey(){
 
       //search books in api
       const promise = api.fetchBookByName(subjectName);
-      promise.then(books => {
-        //render books
-        render.books(books);
-      })
+      try{
+        promise.then(books => {
+          //render books
+          render.books(books);
+        })
+      }catch (err) {
+          messages.innerHTML = "something went wrong.";
+      }
     }      
   }
 }
