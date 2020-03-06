@@ -21,9 +21,9 @@ export function setBookDetails(bookDetailsResult){
 
 
 const dieren = [
-    "Aasgier", "Beverrat", "Capibara", "Doodshoofdaap", "Eikelmuis", "Fluiteend", "Gifkikker", "Heilige ibis", 
-    "Juffer kraanvogel", "Kleine torenvalk", "Koereiger", "Leeuwaap", "Muskusos", "Nandoe", "Oeistitie", 
-    "Peccari", "Rietvoorn", "Rode panda", "Schapenteek", "Stokstaart", "Tapir", "Veelvraat", "Wilde hond", "Zonparkiet"
+    "Aap", "Beer", "Cavia", "Duif", "Egel", "Flamingo", "Giraffe", "Hond", 
+    "Inktvis", "Jaguar", "Krokodil", "Leeuw", "Muis", "Nijlpaard", "Olifant", "Poes", "Rups", 
+    "Schildpad", "Teek", "Uil", "Vis", "Worm", "Yak", "Zeehond"
 ];
 
 const vakanties = [
@@ -34,7 +34,7 @@ const vakanties = [
 ];
 
 const boeken = [
-    "Alice in Wonderland", "De brief voor de koning", "De GVR", "Dolfje Weekwolfje", "Harry Potter", "Hoe overleef ik", 
+    "Alice in Wonderland", "De brief voor de koning", "De GVR", "Dolfje Weerwolfje", "Harry Potter", "Hoe overleef ik", 
     "Koning van Katoren", "Kruistocht in spijkerbroek", "Matilda", "Minoes", "Narnia", "Pippi Langkous", "Pluk van de Petteflet", 
     "Polleke", "Grimm", "De Hobbit", "Lord of the Rings", 
 ];

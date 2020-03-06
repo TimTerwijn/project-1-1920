@@ -75,17 +75,34 @@ export function onTopKey(){
           //save bookdetails in storage
           const bookDetailsRecord = bookDetailsResult.record;
 
-          const bookDetails = [ 
-            {"name": "Titel", "value" : bookDetailsRecord.titles[0]},   
-            {"name": "Auteur", "value" : bookDetailsRecord.authors[0]},  
-            {"name": "Uitgave", "value" : bookDetailsRecord.year},      
-            {"name": "Taal", "value" : bookDetailsRecord.languages[0]},
-          ];
+          const bookDetails = [];
+
+          //check if titles exist
+          if(bookDetailsRecord.titles != null){
+            bookDetails.push({"name": "Titel", "value" : bookDetailsRecord.titles[0]});
+          }
+
+          //check if authors exist
+          if(bookDetailsRecord.authors != null){
+            bookDetails.push({"name": "Auteur", "value" : bookDetailsRecord.authors[0]});
+          }
+
+          //check if year  exist
+          if(bookDetailsRecord.year != null){
+            bookDetails.push({"name": "Uitgave", "value" : bookDetailsRecord.year});
+          }
 
           //check if isbn exist
           if(bookDetailsRecord.isbn != null){
             bookDetails.push({"name": "ISBN", "value" : bookDetailsRecord.isbn[0]});
           }
+
+          //check if languages exist
+          if(bookDetailsRecord.languages != null){
+            bookDetails.push({"name": "Taal", "value" : bookDetailsRecord.languages[0]});
+          }
+
+          
 
           vars.setBookDetails(bookDetails);
           
