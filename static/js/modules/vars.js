@@ -23,7 +23,7 @@ export function setBookDetails(bookDetailsResult){
 const dieren = [
     "Aap", "Beer", "Cavia", "Duif", "Egel", "Flamingo", "Giraffe", "Hond", 
     "Inktvis", "Jaguar", "Krokodil", "Leeuw", "Muis", "Nijlpaard", "Olifant", "Poes", "Rups", 
-    "Schildpad", "Teek", "Uil", "Vis", "Worm", "Yak", "Zeehond"
+    "Schildpad", "Tijger", "Uil", "Vis", "Worm", "Yak", "Zeehond"
 ];
 
 const vakanties = [
