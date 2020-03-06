@@ -10,7 +10,7 @@ https://timterwijn.github.io/project-1-1920/
 I can remember the days as a child when I was bored in the beginning of a project. I was always playing with my mouse on the monitor instead of the things I was supposed to do, that is why I decided to make this application to motivate children by make it easier and more fun for them to pick a subject for their project.
 
 ## Logo
-![Logo](/img/logo.png)
+![Logo](/static/img/logo.png)
 
 ## Table of contents
 * [Diagrams](#diagrams)
