@@ -1,10 +1,13 @@
-# Werkstuk-Omgeving
+# Marco's OBA adventure
+
+# Autor
+Tim Terwijn
 
 ## Github pages:
 https://timterwijn.github.io/project-1-1920/
 
 ## Description
-I want to make a Runescape application where you fill in your stats and gear bonuses, then you can search for a monster, powered by the osrsbox.com API, and calculate your hit and evade chance in percentages.
+This application is for children to make it more fun an easier for them to pick a subject for their project. They also see where they can find the right books for their project with the location of the books in the OBA.
 
 ## Logo
 ![Logo](/img/logo.jpg)
@@ -18,26 +21,22 @@ I want to make a Runescape application where you fill in your stats and gear bon
 
 <!-- What external data source is featured in your project and what are its properties 🌠 -->
 ## What API did I use
-I made use of **Osrsbox.com**.
+I made use of the OBA Api, you can make 200 request an hour before you have to change the URL of the website to make it work again.  
 
-name: "Cow",  
-attack_level: 1,  
-strength_level: 1,  
-defence_level: 1,  
-magic_level: 1,  
-ranged_level: 1,  
-attack_magic: 0,  
-attack_ranged: 0,  
-defence_stab: -21,  
-defence_slash: -21,  
-defence_crush: -21,  
-defence_magic: -21,  
-defence_ranged: -21,  
+Example of a record:
+Insert record here 
 
 ## How to use
 Clone or download the repository $ git clone https://github.com/TimTerwijn/web-app-from-scratch-1920.git  
 Put code on a server.  
 Go to index.html in your browser.  
+Use the arrow buttons to move Marco. 
+Press the up arrow to pick a subject, like animals. . 
+Then you will see animals instead of subject.
+Use the arrow buttons again to pick an animal, like dog.
+Then you will see books of dogs instead of animals.
+Use the arrow buttons again to pick a book.
+Then you will see the info of the book instead of the books.
 
 ## Roadmap
 * ~~Fix github readme.~~  
