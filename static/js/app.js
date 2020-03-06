@@ -75,11 +75,19 @@ export function onTopKey(){
           //save bookdetails in storage
           const bookDetailsRecord = bookDetailsResult.record;
 
-          const bookDetails = [            
-            bookDetailsRecord.titles[0],
-            bookDetailsRecord.titles[0],
-            bookDetailsRecord.authors[0],
+          console.log(bookDetailsResult);
+
+          const bookDetails = [ 
+            {"name": "Titel", "value" : bookDetailsRecord.titles[0]},   
+            {"name": "Auteur", "value" : bookDetailsRecord.authors[0]},  
+            {"name": "Uitgave", "value" : bookDetailsRecord.year},      
+            {"name": "Taal", "value" : bookDetailsRecord.languages[0]},
           ];
+
+          //check if isbn exist
+          if(bookDetailsRecord.isbn != null){
+            bookDetails.push({"name": "ISBN", "value" : bookDetailsRecord.isbn[0]});
+          }
 
           vars.setBookDetails(bookDetails);
           
@@ -92,7 +100,7 @@ export function onTopKey(){
     }
 
     //check if you are in subject menu 4, EX: book name, book images
-    else if(vars.menu == 4){
+    else if(vars.menu >= 4){
       //do nothing (YET)
     }
     

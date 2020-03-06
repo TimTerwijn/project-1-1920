@@ -95,7 +95,7 @@ export function walkLeft(){
       books();
     }
     //check if you are in subject menu 4, EX: image of book, name of book
-    else if(vars.menu == 4){
+    else if(vars.menu >= 4){
       //swap books
       vars.bookDetails.unshift(vars.bookDetails.splice(vars.bookDetails.length - 1, 1)[0]);
           
@@ -148,7 +148,7 @@ export function walkRight(){
       books();
     }
     //check if you are in subject menu 4, EX: image of book, name of book
-    else if(vars.menu == 4){
+    else if(vars.menu >= 4){
       //swap books
       vars.bookDetails.push(vars.bookDetails.splice(0, 1)[0]);
           
@@ -206,11 +206,17 @@ export function books() {
   //render books
   for (let index = 0; index < 3; index++) {
     const item = books[index];
-    let html = "";
 
     const badId1 = "842828168";
     const badId2 = "297712861";
-    const imgId = item.coverimages[1].substring(81, 90);
+    let imgId = null;
+    
+    //check if it is null for substring
+    if(item.coverimages[1] != null){
+      imgId = item.coverimages[1].substring(81, 90);
+    }
+
+    let html = "";
     
     //check if there is no image, or a bad images
     if(item.coverimages[1] == null || imgId == badId1 || imgId == badId2){
@@ -265,17 +271,14 @@ export function bookDetails(){
   parent.innerHTML = "";
 
   const bookDetails = vars.bookDetails;
-  console.log(bookDetails);
 
-  bookDetails.forEach(bookDetail => {
+  for (let index = 0; index < 3; index++) {
+    const bookDetail = bookDetails[index];
     //render book
     const html = `
-      <section>${bookDetail}</section>
+      <div><p>${bookDetail.name + ": " + bookDetail.value}</p></div>
     `;
 
     parent.insertAdjacentHTML('beforeend', html);
-  });
-
-  
-  
+  }
 }
