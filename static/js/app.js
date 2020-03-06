@@ -110,7 +110,9 @@ export function onTopKey(){
           render.bookDetails();
 
           //render summary
-          render.bookSummary(bookDetailsRecord.summaries)
+          if(bookDetailsRecord.summaries != null){
+            render.bookSummary(bookDetailsRecord.summaries);
+          }          
         })
       }catch (err) {
           messages.innerHTML = "something went wrong.";

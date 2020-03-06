@@ -41,7 +41,7 @@ const boeken = [
 
 const stoer = [
     "Politie", "Ajax", "PSV", "Feyenoord", "Brandweer", "Computers", 
-    "Pokémon", "Star Wars", "Lord of the Rings", "Lego", "Playmobil", "McDonald's", "Burger King", "Ridders", "Ruimte", 
+    "Pokémon", "Star Wars", "Lord of the Rings", "Lego", "Playmobil", "Ridders", "Ruimte", 
     "Elektronica", "Yu-Gi-Oh"
 ];
     
