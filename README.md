@@ -1,4 +1,4 @@
-# Marco's OBA adventure
+# Marco's OBA Adventure
 
 # Autor
 Tim Terwijn
@@ -7,10 +7,10 @@ Tim Terwijn
 https://timterwijn.github.io/project-1-1920/
 
 ## Description
-This application is for children to make it more fun an easier for them to pick a subject for their project. They also see where they can find the right books for their project with the location of the books in the OBA.
+I can remember the days as a child when I was bored in the beginning of a project. I was always playing with my mouse on the monitor instead of the things I was supposed to do, that is why I decided to make this application to motivate children by make it easier and more fun for them to pick a subject for their project.
 
 ## Logo
-![Logo](/img/logo.jpg)
+![Logo](/img/logo.png)
 
 ## Table of contents
 * [Diagrams](#diagrams)
