@@ -52,6 +52,18 @@ export const subjects = [
     {"name" : "Stoer", "value" : stoer},
 ]
 
+//randomize all subjects
+subjects.forEach(subject => {
+    shuffleArray(subject.value);
+});
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
 export async function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
