@@ -63,13 +63,37 @@ export function onTopKey(){
 
     //check if you are in subject menu 3, EX: book 1 of horse, book 2 of horse
     else if(vars.menu == 3){
-      //get book url
+      //get book id
       const parentElement = document.getElementById("keyboard");
       const childElement = parentElement.getElementsByTagName('a')[1];
-      const href = childElement.getAttribute("href");
+      const id = childElement.getAttribute("data-id");
 
-      //go to url
-      routie(href);
+      //find book details in api
+      const promise = api.fetchBookById(id);
+      try{
+        promise.then(bookDetailsResult => {
+          //save bookdetails in storage
+          const bookDetailsRecord = bookDetailsResult.record;
+
+          const bookDetails = [            
+            bookDetailsRecord.titles[0],
+            bookDetailsRecord.titles[0],
+            bookDetailsRecord.authors[0],
+          ];
+
+          vars.setBookDetails(bookDetails);
+          
+          //render books
+          render.bookDetails();
+        })
+      }catch (err) {
+          messages.innerHTML = "something went wrong.";
+      }      
+    }
+
+    //check if you are in subject menu 4, EX: book name, book images
+    else if(vars.menu == 4){
+      //do nothing (YET)
     }
     
     //lastly go menu higher EX: animal -> dog -> book of dog

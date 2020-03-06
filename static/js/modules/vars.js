@@ -12,6 +12,13 @@ export function setBooks(booksResults){
     books = booksResults;
 }
 
+//book details you receive from the api
+export let bookDetails = {};
+
+export function setBookDetails(bookDetailsResult){
+    bookDetails = bookDetailsResult;
+}
+
 
 const dieren = [
     "Aasgier", "Beverrat", "Capibara", "Doodshoofdaap", "Eikelmuis", "Fluiteend", "Gifkikker", "Heilige ibis", 

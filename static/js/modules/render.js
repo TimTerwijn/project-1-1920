@@ -94,6 +94,14 @@ export function walkLeft(){
       //render books
       books();
     }
+    //check if you are in subject menu 4, EX: image of book, name of book
+    else if(vars.menu == 4){
+      //swap books
+      vars.bookDetails.unshift(vars.bookDetails.splice(vars.bookDetails.length - 1, 1)[0]);
+          
+      //render books
+      bookDetails();
+    }
   }
 }
 
@@ -138,6 +146,14 @@ export function walkRight(){
           
       //render books
       books();
+    }
+    //check if you are in subject menu 4, EX: image of book, name of book
+    else if(vars.menu == 4){
+      //swap books
+      vars.bookDetails.push(vars.bookDetails.splice(0, 1)[0]);
+          
+      //render books
+      bookDetails();
     }
   }
 }
@@ -199,14 +215,14 @@ export function books() {
     //check if there is no image, or a bad images
     if(item.coverimages[1] == null || imgId == badId1 || imgId == badId2){
       html = `
-        <a class="no-img" href="#details/${item.id}">
+        <a class="no-img" href="#details/${item.id}" data-id="${item.id}">
           <p>${item.titles[0]}</p>
         </a>
       `;
     }
     else{
       html = `
-        <a href="#details/${item.id}">
+        <a href="#details/${item.id}" data-id="${item.id}">
           <img src="${
             item.coverimages ? item.coverimages[1] : 'Geen samenvatting'
           }">
@@ -228,10 +244,8 @@ function hide(element){
 
 function hideAllPages(){
   const searchPage = document.getElementById("search_page");
-  const detailsPage = document.getElementById("details_page");
 
   hide(searchPage);
-  hide(detailsPage);
 }
 
 export function searchPage(){
@@ -243,43 +257,25 @@ export function searchPage(){
   toggleVisibility(searchPage);
 }
 
-export function detailsPage(bookId){
-  //hide all pages
-  hideAllPages();
-  
-  //get book from api
-  const promise = api.fetchBookById(bookId);
-  
-  try{
-    //show details of book
-    promise.then(result => {
-      //render book
-      const book = result.record;
-      renderBookDetails(book);
-    })
-
-    //show details page
-    const detailsPage = document.getElementById("details_page");
-    toggleVisibility(detailsPage);
-  }catch (err) {
-    messages.innerHTML = "something went wrong. ";
-  }
-}
-
-function renderBookDetails(book){
+export function bookDetails(){
   //get parent
-  const parent = document.getElementById('book_details');
+  const parent = document.getElementById('keyboard');
   
   //empty parent
   parent.innerHTML = "";
+
+  const bookDetails = vars.bookDetails;
+  console.log(bookDetails);
+
+  bookDetails.forEach(bookDetail => {
+    //render book
+    const html = `
+      <section>${bookDetail}</section>
+    `;
+
+    parent.insertAdjacentHTML('beforeend', html);
+  });
+
   
-  //render book
-  const html = `
-    <section>${book.titles[0]}</section>
-    <img src="${
-      book.coverimages ? book.coverimages[1] : 'Geen samenvatting'
-      }">
-  `;
   
-  parent.insertAdjacentHTML('beforeend', html);
 }

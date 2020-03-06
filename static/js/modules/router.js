@@ -6,7 +6,4 @@ routie({
     "":() => {
         render.searchPage();
     },
-    'details/:id': (id) => {
-        render.detailsPage(id);
-    }
 });
