@@ -272,6 +272,7 @@ export function bookDetails(){
 
   const bookDetails = vars.bookDetails;
 
+  //render book details under book
   for (let index = 0; index < 3; index++) {
     const bookDetail = bookDetails[index];
     //render book
@@ -281,4 +282,18 @@ export function bookDetails(){
 
     parent.insertAdjacentHTML('beforeend', html);
   }
+}
+
+export function bookSummary(summaries){
+  //render book sumary under page
+  const messages = document.getElementById("messages");
+  messages.innerHTML = "";
+  
+  summaries.forEach(summary => {
+    const html = `
+        <p>${summary}</p>
+      `;    
+    
+    messages.insertAdjacentHTML('beforeend', html);
+  });
 }

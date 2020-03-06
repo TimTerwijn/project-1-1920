@@ -75,8 +75,6 @@ export function onTopKey(){
           //save bookdetails in storage
           const bookDetailsRecord = bookDetailsResult.record;
 
-          console.log(bookDetailsResult);
-
           const bookDetails = [ 
             {"name": "Titel", "value" : bookDetailsRecord.titles[0]},   
             {"name": "Auteur", "value" : bookDetailsRecord.authors[0]},  
@@ -93,6 +91,9 @@ export function onTopKey(){
           
           //render books
           render.bookDetails();
+
+          //render summary
+          render.bookSummary(bookDetailsRecord.summaries)
         })
       }catch (err) {
           messages.innerHTML = "something went wrong.";
