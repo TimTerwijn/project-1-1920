@@ -24,7 +24,7 @@ I can remember the days as a child when I was bored in the beginning of a projec
 I made use of the OBA Api, you can make 200 request an hour before you have to change the URL of the website to make it work again.  
 
 Example of a record:
-![Logo](/static/img/API.png)
+![API](/static/img/API.PNG)
 
 ## How to use
 Clone or download the repository $ git clone https://github.com/TimTerwijn/web-app-from-scratch-1920.git  
